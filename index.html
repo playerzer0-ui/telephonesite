@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exchange 047 - Switchboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+<div class="atmosphere"></div>
+<div class="grain"></div>
+
+<div class="app">
+  <!-- ============ LEFT COLUMN: SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="exchange-label">Exchange 047 · Operational</div>
+      <h1 class="sidebar-title">Switchboard <em>Directory</em></h1>
+      <div class="tabs">
+        <button class="tab active" data-tab="yellow">Yellow Pages</button>
+        <button class="tab" data-tab="map">Map</button>
+      </div>
+    </div>
+
+    <div class="sidebar-content">
+      <!-- Yellow Pages Tab -->
+      <div class="tab-content active" data-content="yellow">
+        <div class="directory-label">Directory Listings</div>
+        
+        <div class="entry" data-num="717045">
+          <div class="entry-num">717045</div>
+          <div class="entry-info">
+            <div class="entry-name">Weather Station</div>
+            <div class="entry-desc">Meteorological reports</div>
+          </div>
+          <div class="entry-code">INF-007</div>
+        </div>
+
+        <div class="entry" data-num="911">
+          <div class="entry-num">911</div>
+          <div class="entry-info">
+            <div class="entry-name">Emergency Services</div>
+            <div class="entry-desc">Police, Fire, Ambulance</div>
+          </div>
+          <div class="entry-code">EMR-911</div>
+        </div>
+
+        <div class="entry" data-num="68790">
+          <div class="entry-num">68790</div>
+          <div class="entry-info">
+            <div class="entry-name">Time & Temperature</div>
+            <div class="entry-desc">Current time and local temp</div>
+          </div>
+          <div class="entry-code">INF-687</div>
+        </div>
+
+      </div>
+
+      <!-- Map Tab -->
+      <div class="tab-content" data-content="map">
+        <div class="map-search-section">
+          <div class="search-label">Find Location</div>
+          <div class="search-wrap">
+            <svg class="search-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="7" stroke-width="2"/>
+              <path d="m21 21-4.3-4.3" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <input class="search-input" id="city" type="text" placeholder="Search city..." autocomplete="off">
+          </div>
+          <div class="suggestions" id="suggestions"></div>
+          <input type="hidden" id="lat" value="51.5074">
+          <input type="hidden" id="lng" value="-0.1278">
+          <input type="hidden" id="country" value="UK">
+        </div>
+
+        <div class="map-view">
+          <div class="map-grid"></div>
+          <svg class="map-roads" viewBox="0 0 400 500" preserveAspectRatio="none">
+            <path d="M 50 50 L 350 80 L 380 250 L 320 450" stroke="rgba(217, 119, 6, 0.25)" stroke-width="2" fill="none"/>
+            <path d="M 30 200 L 200 220 L 380 200" stroke="rgba(217, 119, 6, 0.18)" stroke-width="1.5" fill="none"/>
+            <path d="M 200 30 L 220 250 L 200 470" stroke="rgba(217, 119, 6, 0.18)" stroke-width="1.5" fill="none"/>
+            <path d="M 80 380 L 280 350" stroke="rgba(217, 119, 6, 0.15)" stroke-width="1" fill="none"/>
+          </svg>
+          <div class="map-pin" style="top: 18%; left: 28%;" data-label="01 · City Hall"></div>
+          <div class="map-pin" style="top: 42%; left: 58%;" data-label="06 · Emergency Services"></div>
+          <div class="map-pin active" style="top: 65%; left: 42%;" data-label="07 · Weather Station"></div>
+          <div class="map-pin" style="top: 28%; left: 75%;" data-label="03 · Hospital"></div>
+          <div class="map-pin" style="top: 78%; left: 70%;" data-label="09 · Railway"></div>
+          <div class="map-pin" style="top: 52%; left: 22%;" data-label="05 · Fire Dept"></div>
+          <div class="map-legend">Sector 047 · District Map</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MIDDLE COLUMN: TELEPHONE ============ -->
+  <main class="phone-col">
+    <div class="phone-bg-decor"></div>
+
+    <div class="phone-stage">
+      <div class="line-status">
+        <div class="left">
+          <span>Line 047</span>
+          <span style="color: var(--border-bright);">·</span>
+          <span>Channel A</span>
+        </div>
+        <div class="right">
+          <div class="live">
+            <span class="dot" id="statusDot"></span>
+            <span id="statusText">Idle</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone">
+        <div class="phone-body">
+          <div class="brand-plate">Model 500 · Bell Co.</div>
+
+          <div class="handset-area">
+            <svg class="handset-svg" id="handset" viewBox="0 0 280 76" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="handsetGrad" x1="0" y1="0" x2="0" y2="76" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#4a3829"/>
+                  <stop offset="35%" stop-color="#3a2c20"/>
+                  <stop offset="70%" stop-color="#2a1f18"/>
+                  <stop offset="100%" stop-color="#0d0805"/>
+                </linearGradient>
+                <linearGradient id="handsetHi" x1="0" y1="0" x2="0" y2="20" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="rgba(255,255,255,0.2)"/>
+                  <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+                </linearGradient>
+                <radialGradient id="speakerGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#1a0f08"/>
+                  <stop offset="60%" stop-color="#0a0604"/>
+                  <stop offset="100%" stop-color="#000"/>
+                </radialGradient>
+              </defs>
+              <rect x="40" y="22" width="200" height="32" fill="url(#handsetGrad)" rx="6"/>
+              <ellipse cx="40" cy="38" rx="34" ry="27" fill="url(#handsetGrad)"/>
+              <ellipse cx="240" cy="38" rx="34" ry="27" fill="url(#handsetGrad)"/>
+              <rect x="48" y="22" width="184" height="6" fill="url(#handsetHi)" rx="3"/>
+              <ellipse cx="40" cy="18" rx="26" ry="6" fill="rgba(255,255,255,0.12)"/>
+              <ellipse cx="240" cy="18" rx="26" ry="6" fill="rgba(255,255,255,0.12)"/>
+              <ellipse cx="40" cy="38" rx="22" ry="16" fill="#0a0604"/>
+              <ellipse cx="40" cy="38" rx="18" ry="13" fill="url(#speakerGrad)"/>
+              <g fill="#000" opacity="0.55">
+                <circle cx="32" cy="33" r="1.3"/><circle cx="40" cy="33" r="1.3"/><circle cx="48" cy="33" r="1.3"/>
+                <circle cx="28" cy="38" r="1.3"/><circle cx="36" cy="38" r="1.3"/><circle cx="44" cy="38" r="1.3"/><circle cx="52" cy="38" r="1.3"/>
+                <circle cx="32" cy="43" r="1.3"/><circle cx="40" cy="43" r="1.3"/><circle cx="48" cy="43" r="1.3"/>
+              </g>
+              <ellipse cx="240" cy="38" rx="22" ry="16" fill="#0a0604"/>
+              <ellipse cx="240" cy="38" rx="18" ry="13" fill="url(#speakerGrad)"/>
+              <g fill="#000" opacity="0.55">
+                <circle cx="232" cy="33" r="1.3"/><circle cx="240" cy="33" r="1.3"/><circle cx="248" cy="33" r="1.3"/>
+                <circle cx="228" cy="38" r="1.3"/><circle cx="236" cy="38" r="1.3"/><circle cx="244" cy="38" r="1.3"/><circle cx="252" cy="38" r="1.3"/>
+                <circle cx="232" cy="43" r="1.3"/><circle cx="240" cy="43" r="1.3"/><circle cx="248" cy="43" r="1.3"/>
+              </g>
+            </svg>
+            <div class="cradle">
+              <div class="cradle-pillar"></div>
+              <div class="cradle-pillar"></div>
+            </div>
+          </div>
+
+          <div class="display-window">
+            <div class="display-label">Number Dialed</div>
+            <div class="display-num" id="display"></div>
+          </div>
+
+          <div class="keypad-recess">
+            <div class="keypad">
+              <button class="key" data-key="1">1<span class="letters">—</span></button>
+              <button class="key" data-key="2">2<span class="letters">ABC</span></button>
+              <button class="key" data-key="3">3<span class="letters">DEF</span></button>
+              <button class="key" data-key="4">4<span class="letters">GHI</span></button>
+              <button class="key" data-key="5">5<span class="letters">JKL</span></button>
+              <button class="key" data-key="6">6<span class="letters">MNO</span></button>
+              <button class="key" data-key="7">7<span class="letters">PQRS</span></button>
+              <button class="key" data-key="8">8<span class="letters">TUV</span></button>
+              <button class="key" data-key="9">9<span class="letters">WXYZ</span></button>
+              <button class="key" data-key="*">∗<span class="letters"></span></button>
+              <button class="key" data-key="0">0<span class="letters">+</span></button>
+              <button class="key" data-key="#">#<span class="letters"></span></button>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="action-btn action-call" id="callBtn" onclick="callNumber()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.2 2.2Z"/></svg>
+              Call
+            </button>
+            <button class="action-btn action-hang" id="hangBtn" onclick="hangup()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9c-1.6 0-3.15.25-4.6.7v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85-.18.18-.43.3-.71.3-.28 0-.53-.11-.71-.29L.29 13.08a.965.965 0 0 1-.29-.7c0-.28.11-.53.29-.71C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.67c.18.18.29.43.29.71 0 .28-.11.53-.29.71l-2.46 2.46c-.18.18-.43.29-.71.29-.28 0-.53-.11-.71-.3-.79-.73-1.68-1.36-2.66-1.85-.33-.16-.56-.51-.56-.9v-3.1C15.15 9.25 13.6 9 12 9Z"/></svg>
+              Hang Up
+            </button>
+          </div>
+        </div>
+
+        <svg class="cord" viewBox="0 0 50 220" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 25 0 Q 45 8, 25 16 Q 5 24, 25 32 Q 45 40, 25 48 Q 5 56, 25 64 Q 45 72, 25 80 Q 5 88, 25 96 Q 45 104, 25 112 Q 5 120, 25 128 Q 45 136, 25 144 Q 5 152, 25 160 Q 45 168, 25 176 Q 5 184, 25 192 Q 45 200, 25 208 Q 5 214, 25 220"
+                stroke="#1a0f08" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ RIGHT COLUMN: CHATLOG ============ -->
+  <aside class="chatlog-panel">
+    <div class="chatlog-header">
+      <div class="chatlog-title-row">
+        <h2 class="chatlog-title">Call <em>Log</em></h2>
+        <span class="chatlog-counter">047 · 07</span>
+      </div>
+      <div class="chatlog-sub" id="chatSub">No active call · Dial a number to begin</div>
+    </div>
+
+    <div class="chatlog" id="chatlogBody">
+      <div class="chatlog-empty" id="chatEmpty">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.2 2.2Z"/>
+        </svg>
+        <div class="text">No calls yet.<br>Dial a number on the telephone<br>to connect.</div>
+        <div class="hint">— Awaiting input —</div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
